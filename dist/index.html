@@ -1,0 +1,34 @@
+<template>
+  <style>
+.reveal {
+  background-color: #222 !important;
+}
+
+</style>
+  <!--<link rel="stylesheet" href="./index2.css">-->
+
+  <div class="wrapper js-wrapper">
+    <div class="menu">
+      <h3 class="menu-title">SLIDES</h3>
+      <ul class="js-menu"></ul>
+    </div>
+  </div>
+</template>
+
+<script>
+var template = document.currentScript.parentNode.querySelector('template');
+
+class AlphaReveal extends HTMLElement {
+  constructor() {
+    super()
+    let self = this;
+    let shadowRoot = self.attachShadow({mode: 'closed'});
+    const instance = template.content.cloneNode(true);
+    self.root = shadowRoot
+    shadowRoot.appendChild(instance)
+  }
+}
+
+
+customElements.define('alpha-reveal', AlphaReveal);
+</script>
